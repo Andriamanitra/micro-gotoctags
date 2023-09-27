@@ -1,28 +1,46 @@
-# micro-jump - Jump to function
+# gotoctags - Jump to function in micro editor
 
-Jump to any function, class or heading with F4. Go, Markdown, Python, C... A plugin for micro editor. 
+(forked from https://github.com/terokarvinen/micro-jump (MIT licensed, Copyright 2020-2022 Tero Karvinen http://TeroKarvinen.com))
 
-![Screenshot - Jump to a function with F4 - Jump plugin for Micro](img/jump-to-function-F4-micro-editor-karvinen-screenshot.png)
+Plugin for [micro-editor]() that allows you to jump to any function, class or heading using `fzf` and `ctags`.
 
-## Supports 40+ languages
+## Supported languages
 
-Jump supports all languages supported by your ctags. My 'ctags --list-languages' has 44 entries: Ant, Asm, Asp, Awk, Basic, BETA, C, C++, C#, Cobol, DosBatch, Eiffel, Erlang, Flex, Fortran, Go, HTML, Java, JavaScript, Lisp, Lua, Make, MatLab, ObjectiveC, OCaml, Pascal, Perl, PHP, Python, REXX, Ruby, Scheme, Sh, SLang, SML, SQL, Tcl, Tex, Vera, Verilog, VHDL, Vim, YACC, markdown.
+Jump supports all languages supported by your ctags. Use `ctags --list-languages` to see the full list.
+You can add more by editing `~/.ctags` (for example [julia ctags](https://github.com/JuliaEditorSupport/julia-ctags/blob/master/ctags)).
 
-## Install
+## Installation
 
-On Debian
+Requires fzf, ctags and bash. On Debian you can install the required packages like this:
 
-	$ sudo apt-get update
-	$ sudo apt-get -y install micro fzf exuberant-ctags
-	$ micro --plugin install jump
+    $ sudo apt-get update
+    $ sudo apt-get install micro fzf exuberant-ctags
 
-For other distributions and operating systems, see [help/jump.md](help/jump.md). 
+In some Ubuntu versions, ctags package name is different and the command is
+'sudo apt-get install micro fzf ctags'. For other Linuxes, just install the
+packages that provide commands 'fzf', 'ctags' and 'bash'. If you are using a
+non-Linux OS you are on your own.
 
-Micro-jump is probably easy to install on most Linuxes. It's not known to work on Windows. 
+After installing requirements you need to add the plugin repository to
+`$HOME/.config/micro/settings.json`:
 
-## Use F4 to Jump
+```json
+{
+  "pluginrepos": [
+    "https://raw.githubusercontent.com/andriamanitra/micro-gotoctags/main/repo.json"
+  ]
+}
+```
 
-	$ micro tero.py
+After adding the plugin repository you should be able to install it with
+
+    $ micro -plugin install gotoctags
+
+Now try it out!
+
+## Usage
+
+    $ micro example.py
 
 Write some Python. Jump also supports Go, C, JavaScript...
 
@@ -37,18 +55,17 @@ def foo():
     print("foo")
 ```
 
-Ctrl-S Save. 
+Save the file. Press Ctrl-E to bring up the command prompt and type `jumptag`.
 
-Press F4 to jump. Use up and down arrows to select a function. You can also type part of the name. Press enter to jump.
+Use up and down arrows to select a function. You can also type part of the name.
+Press enter to jump.
 
-## Markdown
+Your cursor now landed on the function. Well done!
 
-Writing books, are we? Markdown support & interactive table of contents are explained in [help/jump.md](help/jump.md). 
+## Adding key bindings
 
-## See also
+Key bindings can be added in $HOME/.config/micro/bindings.json
 
-[micro-run](https://github.com/terokarvinen/micro-run) Press F5 to save and run the current file, F12 to make, F9 to make in background
+For example:
 
-Copyright 2020-2022 Tero Karvinen https://TeroKarvinen.com
-Code repository https://github.com/terokarvinen/micro-jump
-MIT license
+    { "F3": "command:jumptag" }
