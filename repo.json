@@ -5,8 +5,8 @@
   "Tags": ["ctags", "fzf", "symbols", "code browser", "jump"],
   "Versions": [
     {
-      "Version": "0.0.7",
-      "Url": "https://github.com/andriamanitra/micro-gotoctags/archive/v0.0.7.zip",
+      "Version": "0.0.8",
+      "Url": "https://github.com/andriamanitra/micro-gotoctags/archive/v0.0.8.zip",
       "Require": {
         "micro": ">=2.0.0"
       }
