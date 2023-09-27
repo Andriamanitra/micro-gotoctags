@@ -2,7 +2,7 @@
 -- fork of https://github.com/terokarvinen/micro-jump (Copyright 2020-2022 Tero Karvinen http://TeroKarvinen.com)
 -- MIT license
 
-VERSION = "0.0.8"
+VERSION = "1.0.0"
 
 local config = import("micro/config")
 local shell = import("micro/shell")
@@ -13,18 +13,18 @@ function init()
 	config.AddRuntimeFile("gotoctags", config.RTHelp, "help/gotoctags.md")
 end
 
-function jumptagCommand(bp) -- bp BufPane
-		local filename = bp.Buf.Path
+function jumptagCommand(bufpane)
+		local filename = bufpane.Buf.Path
 		-- --sort=no shows symbols in file order
-		local cmd = string.format("bash -c \"ctags -f - --sort=no --fields=n '%s'|fzf --reverse\"", filename)
+		local cmd = string.format("ctags -f - --sort=no --fields=n '%s' | awk -F':|\\t' '{printf \\\"%%4d %%s\\n\\\", \\$NF, \\$1}' | fzf --reverse", filename)
 		local wait = false
 		local getOutput = true
-		local out = shell.RunInteractiveShell(cmd, wait, getOutput)
-		local linenum = out:match("line:(%d+)")
+		local out = shell.RunInteractiveShell(string.format("bash -c \"%s\"", cmd), wait, getOutput)
+		local linenum = out:match("%d+")
 		if linenum == nil then
 			micro.InfoBar():Message("[gotoctags] jump cancelled")
 			return
 		end
-		bp.Cursor.Y = tonumber(linenum) - 1
+		bufpane.Cursor.Y = tonumber(linenum) - 1
 		micro.InfoBar():Message("[gotoctags] jumped to line " .. linenum)
 end
