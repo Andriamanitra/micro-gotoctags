@@ -1,13 +1,13 @@
 [{
-  "Name": "jump",
-  "Description": "Jump to any function, class or heading with F4. Go, Markdown, Python, C...",
-  "Website": "https://github.com/terokarvinen/micro-jump",
+  "Name": "gotoctags",
+  "Description": "Jump to any function, class or heading using ctags and fzf. Fork of https://github.com/terokarvinen/micro-jump",
+  "Website": "https://github.com/andriamanitra/micro-gotoctags",
   "Tags": ["ctags", "fzf", "symbols", "code browser", "jump"],
   "Versions": [
     {
-      "Version": "0.0.5",
-      "Url": "https://github.com/terokarvinen/micro-jump/archive/v0.0.4.zip",
-      "Require": { 
+      "Version": "0.0.6",
+      "Url": "https://github.com/andriamanitra/micro-gotoctags/archive/v0.0.6.zip",
+      "Require": {
         "micro": ">=2.0.0"
       }
     }
