@@ -14,7 +14,7 @@ end
 function jumptagCommand(bp) -- bp BufPane
 		local filename = bp.Buf.Path
 		-- --sort=no shows symbols in file order
-		local cmd = string.format("bash -c \"ctags -f - --sort=no --fields=n '%s'|fzf --layout=reverse", filename)
+		local cmd = string.format("bash -c \"ctags -f - --sort=no --fields=n '%s'|fzf --reverse\"", filename)
 		local wait = false
 		local getOutput = true
 		local out = shell.RunInteractiveShell(cmd, wait, getOutput)
