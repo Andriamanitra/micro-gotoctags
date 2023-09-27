@@ -8,7 +8,7 @@ local micro = import("micro")
 
 function init()
 	config.MakeCommand("jumptag", jumptagCommand, config.NoComplete)
-	config.AddRuntimeFile("jump", config.RTHelp, "help/jump.md")
+	config.AddRuntimeFile("gotoctags", config.RTHelp, "help/gotoctags.md")
 end
 
 function jumptagCommand(bp) -- bp BufPane
@@ -20,9 +20,9 @@ function jumptagCommand(bp) -- bp BufPane
 		local out = shell.RunInteractiveShell(cmd, wait, getOutput)
 		local linenum = out:match("line:(%d+)")
 		if linenum == nil then
-			micro.InfoBar():Message("[micro-jump] jump cancelled")
+			micro.InfoBar():Message("[gotoctags] jump cancelled")
 			return
 		end
 		bp.Cursor.Y = tonumber(linenum) - 1
-		micro.InfoBar():Message("[micro-jump] jumped to line " .. linenum)
+		micro.InfoBar():Message("[gotoctags] jumped to line " .. linenum)
 end
