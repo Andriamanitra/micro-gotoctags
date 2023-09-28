@@ -4,6 +4,10 @@
 
 Plugin for [micro-editor]() that allows you to jump to any function, class or heading using `fzf` and `ctags`.
 
+## Demo
+
+[https://asciinema.org/a/tx1ddv0FzWAuc5yseGK5k6cbC](https://asciinema.org/a/tx1ddv0FzWAuc5yseGK5k6cbC)
+
 ## Supported languages
 
 Jump supports all languages supported by your ctags. Use `ctags --list-languages` to see the full list.
