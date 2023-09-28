@@ -6,7 +6,7 @@ Plugin for [micro-editor]() that allows you to jump to any function, class or he
 
 ## Demo
 
-[https://asciinema.org/a/tx1ddv0FzWAuc5yseGK5k6cbC](https://asciinema.org/a/tx1ddv0FzWAuc5yseGK5k6cbC)
+[https://asciinema.org/a/610756](https://asciinema.org/a/610756)
 
 ## Supported languages
 
