@@ -2,7 +2,7 @@
 -- fork of https://github.com/terokarvinen/micro-jump (Copyright 2020-2022 Tero Karvinen http://TeroKarvinen.com)
 -- MIT license
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 local config = import("micro/config")
 local shell = import("micro/shell")
