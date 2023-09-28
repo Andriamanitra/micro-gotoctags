@@ -16,7 +16,7 @@ end
 function jumptagCommand(bufpane)
     local filename = bufpane.Buf.Path
     -- --sort=no shows symbols in file order
-    local cmd = string.format("ctags -f - --sort=no --fields=n '%s' | awk -F':|\\t' '{printf \\\"%%4d %%s\\n\\\", \\$NF, \\$1}' | fzf --reverse", filename)
+    local cmd = string.format("ctags -f - --sort=no --fields=n '%s' | awk -F'\\t' '{printf \\\"%%4d %%s\\n\\\", substr(\\$NF,6), \\$1}' | fzf --reverse", filename)
     local wait = false
     local getOutput = true
     local out = shell.RunInteractiveShell(string.format("bash -c \"%s\"", cmd), wait, getOutput)
